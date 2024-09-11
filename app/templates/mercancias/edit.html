@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Mercancia</title>
+</head>
+<body>
+    <h1>Editar Mercancia</h1>
+    <form method="POST">
+        <label for="nombrepro">Nombre:</label>
+        <input type="text" id="nombrepro" name="nombrepro" value="{{ mercancia.nombrepro }}" required><br>
+        <label for="tipomer">Tipo:</label>
+        <input type="text" id="tipomer" name="tipomer" value="{{ mercancia.tipomer }}"><br>
+        <label for="adenlace">Enlace:</label>
+        <input type="text" id="adenlace" name="adenlace" value="{{ mercancia.adenlace }}"><br>
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio" name="precio" value="{{ mercancia.precio }}" required><br>
+        <label for="proveedor_id">Proveedor:</label>
+        <select id="proveedor_id" name="proveedor_id" required>
+            {% for proveedor in proveedores %}
+            <option value="{{ proveedor.id }}" {% if proveedor.id == mercancia.proveedor_id %}selected{% endif %}>{{ proveedor.nombre }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

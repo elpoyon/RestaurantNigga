@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Personal</title>
+</head>
+<body>
+    <h1>Lista de Personal</h1>
+    <a href="{{ url_for('personalRoutes.add') }}">Agregar Personal</a>
+    <a href="{{url_for('auth.index') }}">Menu Principal</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Hora de Entrada</th>
+                <th>Hora de Salida</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for personal in personals %}
+            <tr>
+                <td>{{ personal.id }}</td>
+                <td>{{ personal.nombre }}</td>
+                <td>{{ personal.hora_entrada }}</td>
+                <td>{{ personal.hora_salida }}</td>
+                <td>
+                    <a href="{{ url_for('personalRoutes.edit', id=personal.id) }}">Editar</a>
+                    <a href="{{ url_for('personalRoutes.delete', id=personal.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

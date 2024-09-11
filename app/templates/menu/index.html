@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Menús</title>
+</head>
+<body>
+    <h1>Lista de Menús</h1>
+    <a href="{{ url_for('menuRoutes.add') }}">Agregar Menú</a>
+    <a href="{{url_for('auth.index') }}">Menu Principal</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Sopa</th>
+                <th>Proteínas</th>
+                <th>Principio/Ensalada</th>
+                <th>Bebidas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if menus %}
+                {% for menu in menus %}
+                <tr>
+                    <td>{{ menu.id }}</td>
+                    <td>{{ menu.fecha.strftime('%d/%m/%Y') }}</td>
+                    <td>{{ menu.sopa }}</td>
+                    <td>{{ menu.proteinas }}</td>
+                    <td>{{ menu.principio_ensalada }}</td>
+                    <td>{{ menu.bebidas }}</td>
+                    <td>
+                        <a href="{{ url_for('menuRoutes.edit', id=menu.id) }}">Editar</a>
+                        <a href="{{ url_for('menuRoutes.delete', id=menu.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este menú?');">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7">No hay menús registrados.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

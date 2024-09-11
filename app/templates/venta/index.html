@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Ventas</h1>
+    <a href="{{ url_for('ventaRoutes.add') }}">Agregar Venta</a>
+    <a href="{{ url_for('auth.index') }}">Menu Principal</a>
+    <div class="table-container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Área</th>
+                    <th>Descripción Corta</th>
+                    <th>Precio</th>
+                    <th>Usuario</th>
+                    <th>Menu</th>
+                    <th>Empleado</th>
+                    <th>Mercancía</th> 
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in data %}
+                <tr>
+                    <td>{{ venta.id }}</td>
+                    <td>{{ venta.area }}</td>
+                    <td>{{ venta.descripcion_corta }}</td>
+                    <td>{{ venta.precio }}</td>
+                    <td>{{ venta.usuario.correo }}</td>
+                    <td>{{ venta.menu.id }}</td>
+                    <td>{{ venta.personal.nombre }}</td>
+                    <td>{% if venta.mercancia %}{{ venta.mercancia.nombrepro }}{% else %}N/A{% endif %}</td> 
+                    <td>
+                        <a href="{{ url_for('ventaRoutes.edit', id=venta.id) }}">Editar</a>
+                        <a href="{{ url_for('ventaRoutes.delete', id=venta.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?');">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

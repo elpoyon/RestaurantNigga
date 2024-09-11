@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Mercancias</title>
+</head>
+<body>
+    <h1>Lista de Mercancias</h1>
+    <a href="{{ url_for('mercanciaRoutes.add') }}">Agregar Mercancia</a>
+    <a href="{{url_for('auth.index') }}">Menu Principal</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Enlace</th>
+                <th>Precio</th>
+                <th>Proveedor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mercancia in data %}
+            <tr>
+                <td>{{ mercancia.id }}</td>
+                <td>{{ mercancia.nombrepro }}</td>
+                <td>{{ mercancia.tipomer }}</td>
+                <td>{{ mercancia.adenlace }}</td>
+                <td>{{ mercancia.precio }}</td>
+                <td>{{ mercancia.proveedor.nombre }}</td>
+                <td>
+                    <a href="{{ url_for('mercanciaRoutes.edit', id=mercancia.id) }}">Editar</a>
+                    <a href="{{ url_for('mercanciaRoutes.delete', id=mercancia.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta mercancia?');">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{url_for('proveedorRoutes.add',)}}">Agregar proveedor</a>
+</body>
+</html>
+{% endblock %}

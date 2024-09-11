@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Personal</title>
+</head>
+<body>
+    <h1>Agregar Personal</h1>
+    <form method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="hora_entrada">Hora de Entrada:</label>
+        <input type="time" id="hora_entrada" name="hora_entrada" required><br>
+        <label for="hora_salida">Hora de Salida:</label>
+        <input type="time" id="hora_salida" name="hora_salida" required><br>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>
+{% endblock %}

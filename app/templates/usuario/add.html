@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Agregar Usuario</h2>
+    
+    <form method="post" action="{{ url_for('usuarioRoutes.add_usuario') }}">
+        <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="email" name="correo" id="correo" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="contraseña">Contraseña</label>
+            <input type="password" name="contraseña" id="contraseña" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+    </form>
+    
+    <a href="{{ url_for('usuarioRoutes.index') }}" class="btn btn-secondary mt-3">Regresar</a>
+</div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+<header class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Bienvenido al Restaurante Tres Esquinas</h1>
+        <p class="lead">Descubre nuestros servicios y productos, y explora todo lo que tenemos para ofrecerte.</p>
+    </div>
+</header>
+
+<section id="servicios" class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Ventas</h5>
+                        <p class="card-text">Gestiona y realiza un seguimiento de todas las ventas realizadas en el restaurante.</p>
+                        <a href="/venta" class="btn btn-primary">Ir a Ventas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Usuarios</h5>
+                        <p class="card-text">Administra la información de los usuarios que interactúan con el sistema.</p>
+                        <a href="/usuarioRoutes" class="btn btn-primary">Ir a Usuarios</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Mercancía</h5>
+                        <p class="card-text">Controla y gestiona el inventario de productos y suministros del restaurante.</p>
+                        <a href="/mercancia" class="btn btn-primary">Ir a Mercancía</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Menú</h5>
+                        <p class="card-text">Crea y organiza los menús diarios para ofrecer a los clientes las mejores opciones.</p>
+                        <a href="/menus" class="btn btn-primary">Ir a Menú</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Personal</h5>
+                        <p class="card-text">Administra la información del personal que labora en el restaurante.</p>
+                        <a href="/personals" class="btn btn-primary">Ir a Personal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <p class="mb-0">&copy; 2024 Restaurante Tres Esquinas. Todos los derechos reservados.</p>
+    </div>
+</footer>
+{% endblock %}

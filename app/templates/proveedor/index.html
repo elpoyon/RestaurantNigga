@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Ventas - Restaurante Tres Esquinas{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Proveedores</title>
+</head>
+<body>
+    <h1>Lista de Proveedores</h1>
+    <a href="{{ url_for('proveedorRoutes.add') }}">Agregar Proveedor</a>
+    <a href="{{ url_for('mercanciaRoutes.index') }}">Volver a Mercancías</a>
+    <a href="{{url_for('auth.index') }}">Menu Principal</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Número de Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in data %}
+            <tr>
+                <td>{{ proveedor.id }}</td>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.direccion }}</td>
+                <td>{{ proveedor.numero_telefono }}</td>
+                <td>
+                    <a href="{{ url_for('proveedorRoutes.edit', id=proveedor.id) }}">Editar</a>
+                    <a href="{{ url_for('proveedorRoutes.delete', id=proveedor.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}
