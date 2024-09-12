@@ -4,11 +4,11 @@ from app.models.usuario import Usuario
 
 auth_bp = Blueprint('auth', __name__)
 
-@auth_bp.route('/index')
+@auth_bp.route('/auth/index')
 def index():
     return render_template('indice/index.html')
 
-@auth_bp.route('/', methods=['GET', 'POST'])
+@auth_bp.route('/auth', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
